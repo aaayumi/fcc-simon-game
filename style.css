@@ -1,0 +1,110 @@
+body{
+    background-color:beige;
+}
+
+/* game board */
+
+
+.circle {
+    position: relative;
+	margin: 1em auto;
+	padding: 0;
+	width: 20em; height: 20em;
+	top: 100pt;
+	border-radius: 50%;
+	list-style: none;
+    border:5px solid black;
+}
+
+.gameBoard{
+    
+    background-color: #ccc;
+    -moz-border-radius: 100px ;
+    border-radius:  100px;
+    position: relative; 
+    margin: 50px 0 0 0px; 
+    border: solid #fff 1px;
+    z-index: 1000;
+}
+
+.slice1 {
+	overflow: hidden; /**/
+	position: absolute;
+	top: 0; right: 0;
+	width: 50%; height: 50%;
+	transform-origin: 0% 100%; 
+	transform: rotate(-90deg) 
+	skewY(0deg); 
+}
+
+.slice2 {
+	overflow: hidden; /**/
+	position: absolute;
+	top: 0; right: 0;
+	width: 50%; height: 50%;
+	transform-origin: 0% 100%; 
+	transform: rotate(360deg) 
+	skewY(0deg); 
+}
+
+.slice3 {
+	overflow: hidden; /**/
+	position: absolute;
+	top: 0; right: 0;
+	width: 50%; height: 50%;
+	transform-origin: 0% 100%; 
+	transform: rotate(90deg) 
+	skewY(0deg); 
+}
+
+
+.slice4 {
+	overflow: hidden; /**/
+	position: absolute;
+	top: 0; right: 0;
+	width: 50%; height: 50%;
+	transform-origin: 0% 100%; 
+	transform: rotate(180deg) 
+	skewY(0deg); 
+}
+
+.red {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	border-radius: 50%;
+	background: red;
+	text-align: center;
+	transition: background-color .5s;
+}
+
+.blue {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	border-radius: 50%;
+	background: blue;
+	text-align: center;
+	transition: background-color .5s;
+}
+
+.yellow {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	border-radius: 50%;
+	background: yellow;
+	text-align: center;
+	transition: background-color .5s;
+}
+
+
+.green {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	border-radius: 50%;
+	background: green;
+	text-align: center;
+	transition: background-color .5s;
+}
