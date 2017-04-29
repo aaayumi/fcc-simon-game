@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
 body{
-    background-color:beige;
+    background-color:#fdeff2;
 }
 
+/* black color : #383c3c; */
 /* game board */
 
 .circle {
     position: relative;
+    color: #383c3c;
 	margin: 1em auto;
 	padding: 0;
 	width: 30em; height: 30em;
@@ -25,7 +27,7 @@ body{
     width: 200px;
     height: 200px;
     z-index: 10;
-    background: pink;
+    background: #fddea5;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -92,7 +94,7 @@ body{
 	left: -100%;
 	width: 200%; height: 200%;
 	border-radius: 50%;
-	background: red;
+	background: #d7003a;
 	text-align: center;
 	transition: background-color .5s;
     border: 10px solid black;
@@ -104,7 +106,7 @@ body{
 	left: -100%;
 	width: 200%; height: 200%;
 	border-radius: 50%;
-	background: blue;
+	background: #38a1db;
 	text-align: center;
 	transition: background-color .5s;
     border: 10px solid black;
@@ -115,7 +117,7 @@ body{
 	left: -100%;
 	width: 200%; height: 200%;
 	border-radius: 50%;
-	background: yellow;
+	background: #ffec47;
 	text-align: center;
 	transition: background-color .5s;
     border: 10px solid black;
@@ -127,7 +129,7 @@ body{
 	left: -100%;
 	width: 200%; height: 200%;
 	border-radius: 50%;
-	background: green;
+	background: #68be8d;
 	text-align: center;
 	transition: background-color .5s;
     border: 10px solid black;
@@ -135,7 +137,7 @@ body{
 
 /* game function */
 button {
-    background-color:lightsalmon;
+    background-color:#f08300;
     padding: 10px 10px 10px 10px;
     border-style:none;
     border-radius: 20px;
