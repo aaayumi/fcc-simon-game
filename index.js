@@ -8,6 +8,7 @@ var audio =["simonSound1.mp3","simonSound2.mp3","simonSound3.mp3","simonSound4.m
 var random = [];
 var playerNum = [];
 var computerTurn = false;
+var newStart = false;
 
 /* ===== game start ===== */
 $(document).ready(function(){
@@ -21,29 +22,15 @@ $("#start").on("click",function(){
 
 /* ===== game round ===== */
 function gameRound(){
-  playerNum = [];
-  count++;
+   playerNum = [];
+   var i = Math.floor((Math.random()*4)+1);
+   random.push(i);
+   count++;
 
-  if (count < 10){
+  if (count < 5){
   $("#count").html("" + count);
-   setTimeout(function(){
     randomNum();
     console.log("gameRound");
-  },1000);
-  } else {
-  // game finish! 
-  $("#count").html("#");
-  alert("finish!");
-  }
-}
-
-/*function gameContinue(){
-  playerNum = [];
-  if (count < 10){
-  $("#count").html("" +count);
-   setTimeout(function(){
-    randomNum();
-  },500);
   } else {
   // game finish! 
   $("#count").html("#");
@@ -54,28 +41,10 @@ function gameRound(){
 /* ===== select random number ===== */
 
 function randomNum(){
-   computerTurn = true;
-   var i = Math.floor((Math.random()*4)+1);
-   random.push(i);
-
    for (var i = 0; i < random.length; i++){
-    checkTimeout(i);
-     playerMove();
-   /* setTimeout(function(){
-    checkTimeout(i);
-   },3000 * i + 3000)
-
-   playerMove(); */
+     checkTimeout(i);
  } 
 }
-   /* for (var i = 0; i < random.length; i++){
-  
-   checkTimeout(i);
-   console.log("setRandomNumber");
-
-   playerMove();
-}
-}*/
 
 /* ===== highlight ===== */
 
@@ -83,88 +52,96 @@ function checkTimeout(i){
   setTimeout(function(){
   highlight(random[i]);
    }, 900 * i + 1000);
-   console.log("checktimeout" + "" + random);
+  setTimeout(function(){
+  playAudio(random[i]);
+   }, 900 * i + 1000);
    }
 
-
-   /*var move = setInterval(function(){
-    highlight(random[i]);
-    if ( i >= random.length){
-      clearInterval(move);
-    }
-  }, 900 * i + 1000);
-  }
-  /*
-  setTimeout(function(){
-  highlight(random[i]);
-  }, 900 * i + 1000);
-   console.log("checktimeout" + "" + random);
-   clearTimeout(); :?
-} */
-
-function highlight(i){
+ function highlight(i){
    $(".slice" + i).css("opacity", "0.5");
     setTimeout(function(){
     $(".slice" + i).css("opacity", "1.0");
-    },1000);
-    new Audio(url + audio[i-1]).play();
-     console.log("highlight" + "" + random);
-    clearTimeout();
-}
+    },600);  
+  }
+
+ function playAudio(i){
+  new Audio(url + audio[i-1]).play();
+};
 
 /* ===== player move ===== */
-function playerMove(){
 
 $(".slice1").on("click",function(){
+    newStart = false;
     playerNum.push(1);
-    setTimeout(function(){
+     setTimeout(function(){
       highlight(1);
+      playAudio(1);
     }, 500);
-    clearTimeout();
      console.log("slice1" + "" + random);
-    checkColor();
+       if(checkColor() == true){
+         playerNum = [];
+         newStart = true;
+        gameRound();
+        console.log("checkRound");
+      }
  }); 
 
 $(".slice2").on("click",function(){
+   newStart = false;
     playerNum.push(2);
-    checkTimeout(2);
     setTimeout(function(){
       highlight(2);
+      playAudio(2);
     }, 500);
-    clearTimeout();
     console.log("slice2" + "" + random);
-     checkColor();
+       if(checkColor() == true){
+         playerNum = [];
+         newStart = true;
+        gameRound();
+        console.log("checkRound");
+      }
  }); 
 
 $(".slice3").on("click",function(){
+    newStart = false;
     playerNum.push(3);
-    checkTimeout(3);
-      setTimeout(function(){
+     setTimeout(function(){
       highlight(3);
+      playAudio(3);
     }, 500);
-      clearTimeout();
       console.log("slice3" + "" + random);
-     checkColor();
+       if(checkColor() == true){
+         playerNum = [];
+         newStart = true;
+        gameRound();
+        console.log("checkRound");
+      }
  }); 
 
 $(".slice4").on("click",function(){
-    playerNum.push(4);
-    checkTimeout(4);
-      setTimeout(function(){
+    newStart = false;
+   playerNum.push(4);
+     setTimeout(function(){
       highlight(4);
+      playAudio(4);
     }, 500);
-      clearTimeout();
       console.log("slice4" + "" + random);
-     checkColor();
+
+      if(checkColor() == true){
+         playerNum = [];
+         newStart = true;
+        gameRound();
+        console.log("checkRound");
+      }
  }); 
- computerTurn = false;
-}
+
+
 
 /* ===== check number/color ===== */
 function checkColor(){
   if(random.length === playerNum.length){
-
-    checkNum();
+   console.log(" possible");
+   checkNum();
   } else {
     setTimeout(function(){
     },1000 * count);
@@ -172,22 +149,34 @@ function checkColor(){
 }
 
 function checkNum(){
-  for(var i=0; i<random.length; i++){
-    if(random[i] === playerNum[i]){
-      console.log("random arr" + "" + random);
+  //for(var i = random.length; i--;)
+          if(playerNum.indexOf(random)){
+          console.log("random arr" + "" + random);
       console.log("player arr" + "" + playerNum);
       console.log("count" + "" + count);
       console.log("---------------------");
-      setTimeout(function(){
-        gameRound();
-    },3000 * count);
-      clearTimeout();
+        newStart = true;
+        setTimeout(function(){
+           gameRound();
+         },1000);
+       
     } else {
       console.log("not possible");
-      
+      }
     }
-  }
+/* function checkLength(){
+  if( random.length === playerNum.length )
+  {  
+     setTimeout(function(){
+     gameRound();
+    },3000 * count);
+     console.log(random);
+     console.log(count);
+      console.log("startRound");
+} else {
+  console.log("one more time");
 }
+};
 
 /* ===== game reset ===== */
 $("#reset").on("click",function(){
@@ -196,6 +185,7 @@ $("#reset").on("click",function(){
   random = [];
   playerNum = [];
   console.log("random arr" + "" + random);
-      console.log("player arr" + "" + playerNum);
+  console.log("player arr" + "" + playerNum);
  });
-}); 
+ });
+
