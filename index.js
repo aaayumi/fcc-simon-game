@@ -17,6 +17,7 @@ $("#start").on("click",function(){
   count = 0;
   random = [];
   playerNum = [];
+  $("#mode").html("Normal");
   gameRound();
  }); 
 
@@ -25,6 +26,7 @@ $("#strict").on("click",function(){
   count = 0;
   random = [];
   playerNum = [];
+  $("#mode").html("Strict");
  $( '#strict' ).addClass( 'strict-on' );
   console.log("#strict");
   gameRound();
@@ -183,6 +185,7 @@ var check = random.every(function(element, index){
 /* ===== game reset ===== */
 $("#reset").on("click",function(){
   $("#count").html("0");
+  $("#mode").html("SELECT");
   random = [];
   playerNum = [];
  });

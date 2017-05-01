@@ -12,7 +12,7 @@
 <body>
 <div class="container">
 <div class="row">
-<div class="col-sm-12">
+<div class="col-sm-8">
  
 <h1>SIMON GAME 	&reg;</h1>
 <ul class="circle">
@@ -24,17 +24,24 @@
     
 <li class="color slice4" ><div id="game4" class="green"></div></li>
     
-<li class="gameBoard"><button id="start">Start</button>
-<button id="strict">Strict</button>
-<div id="count">0</div>
-<button id="reset">Reset</button></li>
-   
+<!-- game table (inside circle )-->
+<li class="gameBoard">
+<div id="screen">
+<div id="count" class="screen">0</div>
+<div id="mode" class="screen"> SELECT</div>
+</div>
+<div id="buttons">
+<button id="start">Normal mode</button>
+<button id="strict">Strict mode</button>
+<button id="reset">Reset</button>
+</div>
+</li>
 </ul>
 
-
-    </div>
-     </div>
-     </div>
+</div>
+</div>
+</div>
+    
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
